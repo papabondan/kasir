@@ -1,0 +1,11 @@
+=== NOTA CAFFE KITA ===
+Pemesan: Djoko
+Waktu  : 2026-09-04 09:18:58
+--------------------------------
+---
+Kopi Hitam      x1  : Rp 4.000
+--------------------------------
+---
+Total Belanja : Rp 4.000
+Uang Tunai    : Rp 4.000
+Kembalian     : Rp 0

@@ -1,0 +1,18 @@
+================================
+           CAFFE KITA           
+Jl. Bantaran 1 Gg 1A no 17 Kota 
+             Malang             
+================================
+Pemesan : Pelanggan
+Waktu   : 2026-09-04 07:58:59
+--------------------------------
+Kopi Hitam
+1 x Rp 4.000            Rp 4.000
+--------------------------------
+TOTAL                   Rp 4.000
+BAYAR                   Rp 4.000
+KEMBALI                     Rp 0
+================================
+         Terima kasih!          
+     Selamat datang kembali     
+================================
