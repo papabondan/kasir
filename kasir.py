@@ -36,8 +36,8 @@ if not os.path.exists(FOLDER_NOTA):
 
 SMTP_SERVER = "://gmail.com"
 SMTP_PORT = 587
-EMAIL_PENGIRIM = "sdijatim@gmail.com"
-PASSWORD_APLIKASI = "ivqaobsrfzwossja"
+EMAIL_PENGIRIM = "akun@gmail"
+PASSWORD_APLIKASI = "pasword aplikasi"
 
 
 # ============================================================
