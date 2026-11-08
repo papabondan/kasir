@@ -1,21 +1,21 @@
-
 from database.connection import get_connection
+from services.auth_service import hash_password
 
 
 def init_db():
-    """
+  """
     Membuat tabel database jika belum tersedia.
     Tidak menghapus data yang sudah ada.
     """
 
-    with get_connection() as conn:
-        cursor = conn.cursor()
+  with get_connection() as conn:
+    cursor = conn.cursor()
 
-        # =========================================
-        # TABEL PRODUK
-        # =========================================
+    # =========================================
+    # TABEL PRODUK
+    # =========================================
 
-        cursor.execute("""
+    cursor.execute("""
             CREATE TABLE IF NOT EXISTS produk (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nama_barang TEXT UNIQUE NOT NULL,
@@ -24,11 +24,11 @@ def init_db():
             )
         """)
 
-        # =========================================
-        # TABEL USER
-        # =========================================
+    # =========================================
+    # TABEL USER
+    # =========================================
 
-        cursor.execute("""
+    cursor.execute("""
             CREATE TABLE IF NOT EXISTS user (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT UNIQUE NOT NULL,
@@ -38,11 +38,11 @@ def init_db():
             )
         """)
 
-        # =========================================
-        # TABEL TRANSAKSI
-        # =========================================
+    # =========================================
+    # TABEL TRANSAKSI
+    # =========================================
 
-        cursor.execute("""
+    cursor.execute("""
             CREATE TABLE IF NOT EXISTS transaksi (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 tanggal TEXT NOT NULL,
@@ -55,35 +55,38 @@ def init_db():
             )
         """)
 
-        # =========================================
-        # USER DEFAULT
-        # =========================================
+    # =========================================
+    # USER DEFAULT
+    # =========================================
 
-        cursor.execute("SELECT COUNT(*) FROM user")
+    cursor.execute("SELECT COUNT(*) FROM user")
 
-        if cursor.fetchone()[0] == 0:
+    if cursor.fetchone()[0] == 0:
 
-            cursor.executemany("""
+      cursor.executemany(
+          """
                 INSERT INTO user
                 (username, password, email, role)
                 VALUES (?, ?, ?, ?)
-            """, [
-                (
-                    "owner",
-                    "owner123",
-                    "sdijatim@gmail.com",
-                    "Admin"
-                ),
-                (
-                    "kasir1",
-                    "kasir123",
-                    "sdijatim@gmail.com",
-                    "Kasir"
-                )
-            ])
+            """,
+          [
+              (
+                  "owner",
+                  hash_password("owner123"),
+                  "sdijatim@gmail.com",
+                  "Admin",
+              ),
+              (
+                  "kasir1",
+                  hash_password("kasir123"),
+                  "sdijatim@gmail.com",
+                  "Kasir",
+              ),
+          ],
+      )
 
-    print("Database berhasil diperiksa.")
+  print("Database berhasil diperiksa.")
 
 
 if __name__ == "__main__":
-    init_db()
+  init_db()
